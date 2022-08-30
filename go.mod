@@ -3,7 +3,7 @@ module github.com/onmetal/kubectl-onmetal
 go 1.19
 
 require (
-	github.com/go-logr/zapr v1.2.0
+	github.com/go-logr/zapr v1.2.3
 	github.com/golang/mock v1.6.0
 	github.com/google/addlicense v1.0.0
 	github.com/onmetal/onmetal-api v0.0.13-0.20220622204727-a4b1ebabe699
