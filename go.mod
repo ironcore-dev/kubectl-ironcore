@@ -5,7 +5,7 @@ go 1.19
 require (
 	github.com/go-logr/zapr v1.2.3
 	github.com/golang/mock v1.6.0
-	github.com/google/addlicense v1.1.0
+	github.com/google/addlicense v1.1.1
 	github.com/onmetal/onmetal-api v0.0.13-0.20230109153219-9867c021b1b9
 	github.com/spf13/cobra v1.6.1
 	go.uber.org/zap v1.24.0
