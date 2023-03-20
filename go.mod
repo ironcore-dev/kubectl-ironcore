@@ -7,11 +7,11 @@ require (
 	github.com/onmetal/onmetal-api v0.0.13-0.20230313112836-dfd3ad84912f
 	github.com/spf13/cobra v1.6.1
 	go.uber.org/zap v1.24.0
-	k8s.io/api v0.26.2
-	k8s.io/apimachinery v0.26.2
+	k8s.io/api v0.26.3
+	k8s.io/apimachinery v0.26.3
 	k8s.io/cli-runtime v0.26.2
 	k8s.io/client-go v0.26.2
-	k8s.io/cluster-bootstrap v0.26.2
+	k8s.io/cluster-bootstrap v0.26.3
 	k8s.io/kubectl v0.26.2
 	sigs.k8s.io/controller-runtime v0.14.5
 )
