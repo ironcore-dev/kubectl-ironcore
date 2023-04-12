@@ -7,10 +7,10 @@ require (
 	github.com/onmetal/onmetal-api v0.1.0
 	github.com/spf13/cobra v1.7.0
 	go.uber.org/zap v1.24.0
-	k8s.io/api v0.26.3
-	k8s.io/apimachinery v0.26.3
+	k8s.io/api v0.27.0
+	k8s.io/apimachinery v0.27.0
 	k8s.io/cli-runtime v0.26.3
-	k8s.io/client-go v0.26.3
+	k8s.io/client-go v0.27.0
 	k8s.io/cluster-bootstrap v0.26.3
 	k8s.io/kubectl v0.26.3
 	sigs.k8s.io/controller-runtime v0.14.6
@@ -74,10 +74,10 @@ require (
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	k8s.io/component-base v0.26.3 // indirect
-	k8s.io/klog/v2 v2.80.1 // indirect
-	k8s.io/kube-openapi v0.0.0-20230109183929-3758b55a6596 // indirect
-	k8s.io/utils v0.0.0-20221128185143-99ec85e7a448 // indirect
-	sigs.k8s.io/json v0.0.0-20220713155537-f223a00ba0e2 // indirect
+	k8s.io/klog/v2 v2.90.1 // indirect
+	k8s.io/kube-openapi v0.0.0-20230308215209-15aac26d736a // indirect
+	k8s.io/utils v0.0.0-20230209194617-a36077c30491 // indirect
+	sigs.k8s.io/json v0.0.0-20221116044647-bc3834ca7abd // indirect
 	sigs.k8s.io/kustomize/api v0.12.1 // indirect
 	sigs.k8s.io/kustomize/kyaml v0.13.9 // indirect
 	sigs.k8s.io/structured-merge-diff/v4 v4.2.3 // indirect
