@@ -9,7 +9,7 @@ require (
 	go.uber.org/zap v1.27.0
 	k8s.io/api v0.29.3
 	k8s.io/apimachinery v0.29.3
-	k8s.io/cli-runtime v0.29.2
+	k8s.io/cli-runtime v0.29.3
 	k8s.io/client-go v0.29.3
 	k8s.io/cluster-bootstrap v0.29.2
 	k8s.io/kubectl v0.29.2
