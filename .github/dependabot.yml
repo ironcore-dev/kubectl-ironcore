@@ -25,7 +25,7 @@ updates:
     reviewers:
       - "ironcore-dev/core"
   - package-ecosystem: "docker"
-    directory: "/docs"
+    directory: "/"
     schedule:
       interval: "weekly"
     reviewers:
