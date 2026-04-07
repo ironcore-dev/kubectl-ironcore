@@ -13,25 +13,28 @@ import (
 type Type string
 
 const (
-	MachinePoolType   Type = "MachinePool"
-	VolumePoolType    Type = "VolumePool"
-	BucketPoolType    Type = "BucketPool"
-	NetworkPluginType Type = "NetworkPlugin"
-	APINetletType     Type = "APINetlet"
-	MetalnetletType   Type = "Metalnetlet"
+	MachinePoolType     Type = "MachinePool"
+	MachineProviderType Type = "MachineProvider"
+	VolumePoolType      Type = "VolumePool"
+	BucketPoolType      Type = "BucketPool"
+	NetworkPluginType   Type = "NetworkPlugin"
+	APINetletType       Type = "APINetlet"
+	MetalnetletType     Type = "Metalnetlet"
 )
 
 const (
-	MachinePoolBootstrappersGroup   = "system:bootstrappers:compute-ironcore-dev:machinepools"
-	VolumePoolBootstrappersGroup    = "system:bootstrappers:storage-ironcore-dev:volumepools"
-	BucketPoolBootstrappersGroup    = "system:bootstrappers:storage-ironcore-dev:bucketpools"
-	NetworkPluginBootstrappersGroup = "system:bootstrappers:networking-ironcore-dev:networkplugins"
-	APINetletBootstrappersGroup     = "system:bootstrappers:apinet-ironcore-dev:apinetlets"
-	MetalnetletBootstrappersGroup   = "system:bootstrappers:apinet-ironcore-dev:metalnetlets"
+	MachinePoolBootstrappersGroup     = "system:bootstrappers:compute-ironcore-dev:machinepools"
+	MachineProviderBootstrappersGroup = "system:bootstrappers:compute-ironcore-dev:machineproviders"
+	VolumePoolBootstrappersGroup      = "system:bootstrappers:storage-ironcore-dev:volumepools"
+	BucketPoolBootstrappersGroup      = "system:bootstrappers:storage-ironcore-dev:bucketpools"
+	NetworkPluginBootstrappersGroup   = "system:bootstrappers:networking-ironcore-dev:networkplugins"
+	APINetletBootstrappersGroup       = "system:bootstrappers:apinet-ironcore-dev:apinetlets"
+	MetalnetletBootstrappersGroup     = "system:bootstrappers:apinet-ironcore-dev:metalnetlets"
 )
 
 var AvailableTypes = sets.New[Type](
 	MachinePoolType,
+	MachineProviderType,
 	VolumePoolType,
 	BucketPoolType,
 	NetworkPluginType,
@@ -104,6 +107,16 @@ var fieldsByType = map[Type]fields{
 		},
 		Groups: []string{
 			MetalnetletBootstrappersGroup,
+		},
+	},
+	MachineProviderType: {
+		Description: "Bootstrap token for registering machine providers.",
+		Usages: []string{
+			bootstraptoken.UsageSigning,
+			bootstraptoken.UsageAuthentication,
+		},
+		Groups: []string{
+			MachineProviderBootstrappersGroup,
 		},
 	},
 }
