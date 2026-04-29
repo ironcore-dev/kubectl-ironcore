@@ -6,7 +6,7 @@ require (
 	github.com/go-logr/zapr v1.3.0
 	github.com/ironcore-dev/ironcore v0.3.0
 	github.com/spf13/cobra v1.10.2
-	go.uber.org/zap v1.27.1
+	go.uber.org/zap v1.28.0
 	k8s.io/api v0.34.1
 	k8s.io/apimachinery v0.34.1
 	k8s.io/cli-runtime v0.34.1
