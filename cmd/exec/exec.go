@@ -18,6 +18,18 @@ import (
 	"k8s.io/kubectl/pkg/util/term"
 )
 
+type terminalSizeQueueAdapter struct {
+	queue term.TerminalSizeQueue
+}
+
+func (a terminalSizeQueueAdapter) Next() *remotecommand.TerminalSize {
+	size := a.queue.Next()
+	if size == nil {
+		return nil
+	}
+	return &remotecommand.TerminalSize{Width: size.Width, Height: size.Height}
+}
+
 func Command(restClientGetter genericclioptions.RESTClientGetter) *cobra.Command {
 	var insecureSkipTLSVerifyBackend bool
 
@@ -76,7 +88,8 @@ func Run(ctx context.Context, restClientGetter genericclioptions.RESTClientGette
 		sizePlusOne.Height++
 
 		// this call spawns a goroutine to monitor/update the terminal size
-		sizeQueue = tty.MonitorSize(&sizePlusOne, size)
+		termQueue := tty.MonitorSize(&sizePlusOne, size)
+		sizeQueue = terminalSizeQueueAdapter{termQueue}
 	}
 
 	exec, err := remotecommand.NewSPDYExecutor(cfg, http.MethodPost, req.URL())
