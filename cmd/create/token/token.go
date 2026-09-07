@@ -136,9 +136,9 @@ func Run(ctx context.Context, opts Options) error {
 
 	secret := utilbootstraptoken.ToSecret(t)
 
-	patchOpts := []client.PatchOption{client.ForceOwnership, api.FieldOwner}
+	applyOpts := []client.ApplyOption{client.ForceOwnership, api.FieldOwner}
 	if opts.DryRun == cmdutil.DryRunServer {
-		patchOpts = append(patchOpts, client.DryRunAll)
+		applyOpts = append(applyOpts, client.DryRunAll)
 	}
 
 	if opts.DryRun != cmdutil.DryRunClient {
@@ -146,7 +146,7 @@ func Run(ctx context.Context, opts Options) error {
 		if err != nil {
 			return err
 		}
-		if err := c.Patch(ctx, secret, client.Apply, patchOpts...); err != nil {
+		if err := c.Apply(ctx, utilbootstraptoken.ToSecretApplyConfiguration(t), applyOpts...); err != nil {
 			return err
 		}
 	}

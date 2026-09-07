@@ -14,6 +14,7 @@ import (
 
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	corev1apply "k8s.io/client-go/applyconfigurations/core/v1"
 	"k8s.io/cluster-bootstrap/token/api"
 	"k8s.io/cluster-bootstrap/token/util"
 )
@@ -125,7 +126,7 @@ func Generate(template *BootstrapToken) (*BootstrapToken, error) {
 	return &token, nil
 }
 
-func ToSecret(token *BootstrapToken) *corev1.Secret {
+func tokenData(token *BootstrapToken) map[string][]byte {
 	data := map[string][]byte{
 		api.BootstrapTokenIDKey:     []byte(token.ID),
 		api.BootstrapTokenSecretKey: []byte(token.Secret),
@@ -135,8 +136,7 @@ func ToSecret(token *BootstrapToken) *corev1.Secret {
 		data[api.BootstrapTokenDescriptionKey] = []byte(token.Description)
 	}
 	if token.Expires != nil {
-		expirationString := token.Expires.UTC().Format(time.RFC3339)
-		data[api.BootstrapTokenExpirationKey] = []byte(expirationString)
+		data[api.BootstrapTokenExpirationKey] = []byte(token.Expires.UTC().Format(time.RFC3339))
 	}
 
 	for _, usage := range token.Usages {
@@ -147,6 +147,10 @@ func ToSecret(token *BootstrapToken) *corev1.Secret {
 		data[api.BootstrapTokenExtraGroupsKey] = []byte(strings.Join(token.Groups, ","))
 	}
 
+	return data
+}
+
+func ToSecret(token *BootstrapToken) *corev1.Secret {
 	return &corev1.Secret{
 		TypeMeta: metav1.TypeMeta{
 			APIVersion: "v1",
@@ -157,8 +161,14 @@ func ToSecret(token *BootstrapToken) *corev1.Secret {
 			Name:      util.BootstrapTokenSecretName(token.ID),
 		},
 		Type: corev1.SecretTypeBootstrapToken,
-		Data: data,
+		Data: tokenData(token),
 	}
+}
+
+func ToSecretApplyConfiguration(token *BootstrapToken) *corev1apply.SecretApplyConfiguration {
+	return corev1apply.Secret(util.BootstrapTokenSecretName(token.ID), metav1.NamespaceSystem).
+		WithType(corev1.SecretTypeBootstrapToken).
+		WithData(tokenData(token))
 }
 
 func FromSecret(secret *corev1.Secret) (*BootstrapToken, error) {
