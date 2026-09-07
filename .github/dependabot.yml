@@ -5,6 +5,8 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    cooldown:
+      default-days: 7
     reviewers:
       - "ironcore-dev/core"
     groups:
@@ -18,6 +20,8 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    cooldown:
+      default-days: 7
     reviewers:
       - "ironcore-dev/core"
     groups:
@@ -28,6 +32,8 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    cooldown:
+      default-days: 7
     reviewers:
       - "ironcore-dev/core"
     groups:
