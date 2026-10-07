@@ -4,7 +4,7 @@ go 1.26.0
 
 require (
 	github.com/go-logr/zapr v1.3.0
-	github.com/ironcore-dev/ironcore v0.7.0
+	github.com/ironcore-dev/ironcore v0.8.0
 	github.com/spf13/cobra v1.10.2
 	go.uber.org/zap v1.28.0
 	k8s.io/api v0.36.3
